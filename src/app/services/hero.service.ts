@@ -19,7 +19,7 @@ export class HeroService {
   // which is injected into the HeroesComponent.
 
   getHeroes(): Observable<Hero[]> {
-    // send the message _after_ fetching the heroes
+    // TODO: send the message _after_ fetching the heroes
     this.messageService.add('HeroService: fetched heroes');
     return of(HEROES);
   }
