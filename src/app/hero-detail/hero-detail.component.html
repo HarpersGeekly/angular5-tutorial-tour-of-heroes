@@ -1,0 +1,15 @@
+<div *ngIf="hero">
+  <!--When the app starts, the below hero is undefined by design.-->
+  <!--The fix: *ngIf says the div should only display the selected hero details if the hero exists.-->
+  <!--Why? When hero is undefined, the ngIf removes the hero detail from the DOM. There are no hero bindings to worry about.-->
+  <!--Now when the user picks a hero, hero has a value and ngIf puts the hero detail into the DOM.-->
+
+  <h2>{{hero.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{hero.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="hero.name" placeholder="name">
+    </label>
+  </div>
+
+</div>
