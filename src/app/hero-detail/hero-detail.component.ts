@@ -24,11 +24,11 @@ export class HeroDetailComponent implements OnInit {
 
   @Input() hero: Hero; // @Input() used for [hero] in heroes.component.html as: <app-hero-detail [hero]="selectedHero"></app-hero-detail>
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.getHero();
   }
 
-  getHero(): void {
+  getHero() {
     const id = +this.route.snapshot.paramMap.get('id');
     // The route.snapshot is a static image of the route information shortly after the component was created.
     // The paramMap is a dictionary of route parameter values extracted from the URL. The "id" key returns the id of the hero to fetch.
@@ -37,7 +37,12 @@ export class HeroDetailComponent implements OnInit {
       .subscribe(hero => this.hero = hero);
   }
 
-  goBack(): void {
+  save() {
+    this.heroService.updateHero(this.hero)
+      .subscribe(() => this.goBack());
+  }
+
+  goBack() {
     this.location.back();
   }
 
