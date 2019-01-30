@@ -18,7 +18,7 @@ export class HeroesComponent implements OnInit {
   // To set up the component after Angular sets the input properties.
 
   heroes: Hero[];
-  selectedHero: Hero;
+  // selectedHero: Hero;
 
   constructor(private heroService: HeroService) { }// Constructors should do no more than set the initial local variables to simple values.
   // The parameter simultaneously defines a private heroService property and identifies it as a HeroService injection site.
@@ -42,7 +42,8 @@ export class HeroesComponent implements OnInit {
   // The new version waits for the Observable to emit the array of heroes— which could happen now or several minutes from now.
   // Then subscribe passes the emitted array to the callback, which sets the component's heroes property.
   // This asynchronous approach will work when the HeroService requests heroes from the server.
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-  }
+
+  // onSelect(hero: Hero): void {
+  //   this.selectedHero = hero;
+  // }
 }
