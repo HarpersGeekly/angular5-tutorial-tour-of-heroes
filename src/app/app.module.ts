@@ -8,6 +8,9 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroService } from './services/hero.service';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './services/message.service';
+import { AppRoutingModule } from './app-routing.module';
+import { NavbarComponent } from './navbar/navbar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -15,10 +18,13 @@ import { MessageService } from './services/message.service';
     HeroesComponent,
     HeroDetailComponent,
     MessagesComponent,
+    NavbarComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule,
   ],
   // The providers array tells Angular to create a single, shared instance of HeroService and inject into any class that asks for it.
   providers: [

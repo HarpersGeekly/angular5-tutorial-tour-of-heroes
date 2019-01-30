@@ -1,9 +1,4 @@
-<!--the component template, written in HTML.-->
+<app-navbar></app-navbar>
 <h1>{{title}}</h1>
-<!--The double curly braces are Angular's interpolation binding syntax. This interpolation binding presents the component's title property value inside the HTML header tag.-->
-
-
-<!--To display the HeroesComponent, you must add it to the template of the shell AppComponent.-->
-<!--Remember that app-heroes is the element selector for the HeroesComponent. So add an <app-heroes> element to the AppComponent template file, just below the title.-->
-<app-heroes></app-heroes>
+<router-outlet></router-outlet>
 <app-messages></app-messages>
