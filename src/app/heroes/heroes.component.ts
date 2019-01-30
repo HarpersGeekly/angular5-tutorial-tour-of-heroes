@@ -29,7 +29,7 @@ export class HeroesComponent implements OnInit {
     this.getHeroes();
   }
 
-  getHeroes(): void {
+  getHeroes() {
     this.heroService.getHeroes()
       .subscribe(heroes => this.heroes = heroes);
   }
@@ -41,9 +41,31 @@ export class HeroesComponent implements OnInit {
   // That won't work when the HeroService is actually making requests of a remote server.
   // The new version waits for the Observable to emit the array of heroes— which could happen now or several minutes from now.
   // Then subscribe passes the emitted array to the callback, which sets the component's heroes property.
+  // The .subscribe() function is similar to the .then() function in jQuery, but instead of dealing with promises it deals with Observables
+  // That means it will subscribe itself to the observable of interest (which is getHeroes() in this case)
+  // and wait until it is successful and then execute the passed callback function which in your case is: this.heroes = heroes
   // This asynchronous approach will work when the HeroService requests heroes from the server.
 
   // onSelect(hero: Hero): void {
   //   this.selectedHero = hero;
   // }
+
+  add(name: string) {
+    name = name.trim();
+    if (!name) { return; }
+    this.heroService.addHero({ name } as Hero)
+      .subscribe(hero => {
+        this.heroes.push(hero);
+      });
+  }
+  // When the given name is non-blank, the handler creates a Hero-like object from the name
+  // (it's only missing the id) and passes it to the services addHero() method.
+  // When addHero saves successfully, the subscribe callback receives the new hero and pushes it into to the heroes list for display.
+
+  delete(hero: Hero) {
+    this.heroes = this.heroes.filter(h => h !== hero);
+    this.heroService.deleteHero(hero).subscribe();
+    // If you neglect to subscribe(), the service will not send the delete request to the server!
+    // As a rule, an Observable does nothing until something subscribes!
+  }
 }
