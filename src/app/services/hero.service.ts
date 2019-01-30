@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 
-import { Hero } from '../models/hero';
-import { HEROES } from '../models/mock-heroes';
-
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
+import { Hero } from '../models/hero';
+import { HEROES } from '../models/mock-heroes';
 import { MessageService } from './message.service';
 
 @Injectable() // The @Injectable() decorator tells Angular that this service might itself have injected dependencies.
@@ -22,6 +21,12 @@ export class HeroService {
     // TODO: send the message _after_ fetching the heroes
     this.messageService.add('HeroService: fetched heroes');
     return of(HEROES); // used RxJS of() to return an Observable of mock heroes (Observable<Hero[]>).
+  }
+
+  getHero(id: number): Observable<Hero> {
+    // TODO: send the message _after_ fetching the hero
+    this.messageService.add(`HeroService: fetched hero id=${id}`);
+    return of(HEROES.find(hero => hero.id === id));
   }
 
 }
