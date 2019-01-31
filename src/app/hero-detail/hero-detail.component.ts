@@ -22,7 +22,7 @@ export class HeroDetailComponent implements OnInit {
     // The location is an Angular service for interacting with the browser.
   ) { }
 
-  @Input() hero: Hero; // @Input() used for [hero] in heroes.component.html as: <app-hero-detail [hero]="selectedHero"></app-hero-detail>
+  hero: Hero; // @Input() used for [hero] in heroes.component.html as: <app-hero-detail [hero]="selectedHero"></app-hero-detail>
 
   ngOnInit() {
     this.getHero();
